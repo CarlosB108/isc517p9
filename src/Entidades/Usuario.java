@@ -3,20 +3,29 @@ package Entidades;
 /**
  * Created by carlosb108 on 9/21/16.
  */
-public class Cliente {
+public class Usuario {
 
 
     private Integer id;
     private String nombre;
     private String clave;
     private String Correo;
+    private Boolean admin = false;
 
-    public Cliente(Integer id, String nombre,String clave,String Correo) {
+    public Usuario(Integer id, String nombre, String clave, String Correo) {
         this.id = id;
         this.nombre = nombre;
         this.clave = clave;
         this.Correo = Correo;
 
+    }
+
+    public Boolean getAdmin( ){
+        return admin;
+    }
+
+    public void setAdmin( Boolean value ){
+        admin = value;
     }
 
     public Integer getId() {

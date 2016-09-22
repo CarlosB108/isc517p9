@@ -8,7 +8,7 @@ public class Producto {
     private String nombre;
     private Integer cantidad_disponible;
     private String descripcion;
-
+    private Boolean selected;
 
     public Producto( Integer id, String nombre, Integer cantidad_disponible,String descripcion) {
         this.id = id;
@@ -48,5 +48,13 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Boolean getSelected( ){
+        return selected;
+    }
+
+    public void setSelected( Boolean sel ){
+        selected = sel;
     }
 }
