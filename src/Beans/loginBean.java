@@ -20,7 +20,7 @@ public class loginBean {
 
     @PostConstruct
     public void init() {
-        if( General.Users.size() == 0 ){
+        if( General.Users.size( ) == 0 ){
             Usuario admin = new Usuario( 0, "admin", "admin", "admin@local" );
             admin.setAdmin(true);
 
