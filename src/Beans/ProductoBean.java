@@ -111,4 +111,17 @@ public class productoBean  extends AbstractBean implements Serializable {
     public int getCantidad_a_pedir( ){
         return this.cantidad_a_pedir;
     }
+
+    }
+
+
+    ///Chequear
+    public void obtener_nombre (id){
+        for(Producto productos: Productos) {
+            Productos.getNombres;
+        }
+        return obtener_nombre();
+    }
+
 }
+
