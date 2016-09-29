@@ -79,7 +79,7 @@ public class carroBean {
 
 
 
-    public String eliminar( ){
+    public void eliminar( ){
         for( carrito_de_venta c : elementos ){
             if( c.getSelected( ) ){
                 temp_for_clean.add( c );
@@ -91,7 +91,6 @@ public class carroBean {
             temp_for_clean.clear();
             FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( "Producto/s eliminado/s" ) );
         }
-        return "productosDisponibles";
     }
 
 
