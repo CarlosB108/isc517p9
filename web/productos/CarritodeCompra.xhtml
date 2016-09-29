@@ -7,35 +7,22 @@
 
     <h:form id="CarritodeCompra">
         <p:growl id="msg"></p:growl>
-        <h:panelGrid columns="1" cellpadding="5">
-            <p:commandButton value="Agregar al Carrito" type="button" onclick="PF('dlg').show();" />
-        </h:panelGrid>
 
-        <p:dialog header="Agregar al Carrito" widgetVar="dlg" resizable="false">
-            <h:panelGrid columns="2" cellpadding="5">
-                <h:outputLabel for="elementos" value="Elementos:" />
-                <p:inputText id="elementos" value="#{Carrobean.elementos}" />
-
-                <f:facet name="footer">
-                    <p:commandButton value="Agregar a carrito!" icon="ui-icon-check" action="#{bean.agregar}" update="contact_form" />
-                </f:facet>
-            </h:panelGrid>
-        </p:dialog>
-
-        <p:dataTable value="#{Carrobean.contactos}" var="c" paginator="true" rows="5" editable="true">
-            <p:ajax event="rowEdit" listener="#{bean.actualizar}" update=":contact_form:msg"></p:ajax>
-            <p:ajax event="rowEditCancel" listener="#{bean.cancelar}" update=":contact_form:msg"></p:ajax>
-
-            <p:column headerText="Nombre">
-                <h:selectBooleanCheckbox value="#{Producto.selected}" />
+        <p:dataTable value="#{carroBean.elementos}" var="e" paginator="true" rows="5" editable="true">
+            <p:column headerText="">
+                <h:selectBooleanCheckbox value="#{e.selected}" />
             </p:column>
             <p:column headerText="Nombre">
+                <h:outputText value="#{productoBean.obtener_nombre(e.id_producto)}" />
+            </p:column>
+            <p:column headerText="Cantidad">
+
                 <p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{ProductoBean.obtener_nombre(id)}" />
+                        <h:outputText value="#{e.cantidad}" />
                     </f:facet>
                     <f:facet name="input">
-                        <h:inputText value="#{ProductoBean.obtener_nombre(id)}" />
+                        <h:inputText value="#{e.cantidad}" />
                     </f:facet>
                 </p:cellEditor>
             </p:column>
@@ -46,7 +33,7 @@
 
         <br />
 
-        <p:commandButton value="Eliminar seleccionados!" icon="ui-icon-trash" action="#{bean.eliminar()}" update="contact_form">
+        <p:commandButton value="Eliminar seleccionados!" icon="ui-icon-trash" action="#{carroBean.eliminar()}" update="CarritodeCompra">
             <p:confirm message="Realmente desea realizar la acción?" header="Hey!" icon="ui-icon-alert"></p:confirm>
         </p:commandButton>
 
@@ -54,5 +41,11 @@
             <p:commandButton value="Si" type="button" icon="ui-icon-check" styleClass="ui-confirmdialog-yes"></p:commandButton>
             <p:commandButton value="No" type="button" icon="ui-icon-close" styleClass="ui-confirmdialog-no"></p:commandButton>
         </p:confirmDialog>
+
+        <br />
+
+        <br />
+        <h:commandButton class="btn btn-primary btn-lg btn-block btn-flat" action="#{carroBean.procesar( ) }"
+                         value="#{messages.comprar}" icon="plus"/>
     </h:form>
 </ui:composition>

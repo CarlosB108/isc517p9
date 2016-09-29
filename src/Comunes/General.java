@@ -1,7 +1,8 @@
 package Comunes;
 
-import Entidades.Usuario;
 import Entidades.Producto;
+import Entidades.Usuario;
+import Entidades.producto_venta;
 
 import java.util.ArrayList;
 
@@ -9,14 +10,30 @@ public class General {
     //
     static public ArrayList<Usuario> Users = new ArrayList< Usuario >( );
     static public ArrayList<Producto> Products = new ArrayList< Producto>( );
+    static public ArrayList< producto_venta > Ventas = new ArrayList< producto_venta>( );
+
     static public Usuario usuario = null;
     static int contador_usuarios = 0;
     static int contador_productos = 0;
+
+    public static void add_venta( int id_producto, int monto, int cantidad ){
+        Ventas.add( new producto_venta( usuario.getId(), id_producto, monto, cantidad ) );
+    }
 
     public static Usuario get_user(String correo, String clave ){
         for ( Usuario user : Users ){
             if( user.getCorreo().equals( correo ) && user.getClave( ).equals( clave ) ){
                 return user;
+            }
+        }
+
+        return null;
+    }
+
+    public static Producto get_producto( int id_producto ){
+        for ( Producto producto : Products ){
+            if( producto.getId() == id_producto ){
+                return producto;
             }
         }
 

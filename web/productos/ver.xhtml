@@ -24,7 +24,7 @@
                     <h:inputText id="cantidad" value="#{productoBean.cantidad_a_pedir}">
                         <f:ajax />
                     </h:inputText>
-                    <h:commandButton class="btn btn-primary btn-lg btn-block btn-flat" action="#{carroBean.agregar_a_carro( productoBean.producto_actual.id, productoBean.cantidad_a_pedir)}"
+                    <h:commandButton class="btn btn-primary btn-lg btn-block btn-flat" action="#{carroBean.agregar_a_carro( productoBean.producto_actual.id, productoBean.cantidad_a_pedir ) }"
                                      value="#{messages.agregar}" icon="plus"/>
                 </b:column>
             </b:row>

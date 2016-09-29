@@ -73,4 +73,18 @@ public class loginBean {
     public void setPassword( String password ){
         this.password = password;
     }
+
+    public boolean isAdmin( ){
+        return ( General.usuario != null && General.usuario.getAdmin( ) );
+    }
+
+    public String nombre_usuario(  int id ){
+        for( Usuario u : General.Users ){
+            if( u.getId() == id ){
+                return u.getNombre( );
+            }
+        }
+
+        return null;
+    }
 }

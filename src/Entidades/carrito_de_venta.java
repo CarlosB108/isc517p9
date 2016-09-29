@@ -10,6 +10,8 @@ public class carrito_de_venta {
     private Integer id_cliente;
     private Integer cantidad;
 
+    private boolean selected = false;
+
 
     public carrito_de_venta( Integer id, Integer id_producto, Integer id_cliente,Integer cantidad) {
         this.id = id;
@@ -49,5 +51,13 @@ public class carrito_de_venta {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public void setSelected( boolean selected ){
+        this.selected = selected;
+    }
+
+    public boolean getSelected( ){
+        return this.selected;
     }
 }

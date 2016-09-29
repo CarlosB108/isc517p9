@@ -6,39 +6,37 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:b="http://bootsfaces.net/ui">
 
-    <h:form id="ActorListForm" class="form-height">
-        <h:form id="lista_productos_form">
-            <p:growl id="msg"></p:growl>
+    <h:form id="lista_productos_form">
+        <p:growl id="msg"></p:growl>
 
-            <p:dataTable value="#{productoBean.productos}" var="p" paginator="true" rows="10">
-                <p:column headerText="#{messages.nombre}">
-                    <h:outputText value="#{p.nombre}" />
-                </p:column>
-                <p:column headerText="#{messages.precio}">
-                    <h:outputText value="#{p.precio}" />
-                </p:column>
-                <p:column headerText="#{messages.disponibilidad}">
-                    <h:outputText value="#{p.cantidad_disponible}" />
-                </p:column>
-                <p:column>
-                    <p:commandLink value="#{messages.ver}" action="#{productoBean.ver_producto( p.id ) }">
-                        <f:param name="id_producto" value="#{p.id}" />
-                    </p:commandLink>
-                    <p:commandLink value="#{messages.editar}" action="#{productoBean.editar_producto( p.id ) }">
-                        <f:param name="id_producto" value="#{p.id}" />
-                    </p:commandLink>
-                </p:column>
-            </p:dataTable>
+        <p:dataTable value="#{productoBean.productos}" var="p" paginator="true" rows="10">
+            <p:column headerText="#{messages.nombre}">
+                <h:outputText value="#{p.nombre}" />
+            </p:column>
+            <p:column headerText="#{messages.precio}">
+                <h:outputText value="#{p.precio}" />
+            </p:column>
+            <p:column headerText="#{messages.disponibilidad}">
+                <h:outputText value="#{p.cantidad_disponible}" />
+            </p:column>
+            <p:column>
+                <p:commandLink value="#{messages.ver}" action="#{productoBean.ver_producto( p.id ) }">
+                    <f:param name="id_producto" value="#{p.id}" />
+                </p:commandLink>
+                <p:commandLink rendered="#{loginBean.admin}" value="#{messages.editar}" action="#{productoBean.editar_producto( p.id ) }">
+                    <f:param name="id_producto" value="#{p.id}" />
+                </p:commandLink>
+                <p:commandLink rendered="#{loginBean.admin}" value="#{messages.crear}" action="#{productoBean.crear_producto() }">
 
-            <br />
+                </p:commandLink>
+            </p:column>
+        </p:dataTable>
 
-            <p:confirmDialog global="true">
-                <p:commandButton value="Si" type="button" icon="ui-icon-check" styleClass="ui-confirmdialog-yes"></p:commandButton>
-                <p:commandButton value="No" type="button" icon="ui-icon-close" styleClass="ui-confirmdialog-no"></p:commandButton>
-            </p:confirmDialog>
-        </h:form>
+        <br />
 
-        <ui:include src="/confirmacion.xhtml"/>
+        <p:confirmDialog global="true">
+            <p:commandButton value="Si" type="button" icon="ui-icon-check" styleClass="ui-confirmdialog-yes"></p:commandButton>
+            <p:commandButton value="No" type="button" icon="ui-icon-close" styleClass="ui-confirmdialog-no"></p:commandButton>
+        </p:confirmDialog>
     </h:form>
-
 </ui:composition>

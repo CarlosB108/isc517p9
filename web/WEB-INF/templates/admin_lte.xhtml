@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:b="http://java.sun.com/jsf/html">
 
 <h:head>
     <meta charset="utf-8"/>
@@ -111,15 +111,13 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-body">
-                                    <p:panelGrid>
-                                        <p:commandButton value="Shoppin cart"></p:commandButton>
-                                    </p:panelGrid>
+                                    <a href="CarritodeCompra.xhtml" class="btn btn-default btn-flat">Carrito de compras</a>
+                                    <b:panelGrid rendered="#{loginBean.admin}">
+                                        <a href="HistorialdeVentas.xhtml" class="btn btn-default btn-flat">Historial de ventas</a>
+                                        <a href="dashboard.xhtml" class="btn btn-default btn-flat">Dashboard</a>
+                                    </b:panelGrid>
                                 </li>
                                 <li class="user-footer">
-
-                                    <div class="pull-right">
-                                        <a href="http://www.isc.do/logout" class="btn btn-default btn-flat">Salir</a>
-                                    </div>
                                 </li>
                             </ul>
                         </li>

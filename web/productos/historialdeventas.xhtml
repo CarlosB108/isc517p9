@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <h:form id="lista_productos_form">
+        <p:growl id="msg"></p:growl>
+        <p:dataTable value="#{productoBean.ventas}" var="v" paginator="true" rows="10">
+            <p:column headerText="#{messages.nombre_usuario}">
+                <h:outputText value="#{loginBean.nombre_usuario( v.id_usuario )}" />
+            </p:column>
+            <p:column headerText="#{messages.fecha}">
+                <h:outputText value="#{ v.fecha }" />
+            </p:column>
+            <p:column headerText="#{messages.cantidad}">
+                <h:outputText value="#{ v.cantidad_vendida }" />
+            </p:column>
+            <p:column headerText="#{messages.monto }">
+                <h:outputText value="#{ v.monto }" />
+            </p:column>
+        </p:dataTable>
+
+        <br />
+
+        <p:confirmDialog global="true">
+            <p:commandButton value="Si" type="button" icon="ui-icon-check" styleClass="ui-confirmdialog-yes"></p:commandButton>
+            <p:commandButton value="No" type="button" icon="ui-icon-close" styleClass="ui-confirmdialog-no"></p:commandButton>
+        </p:confirmDialog>
+    </h:form>
+
+</ui:composition>
