@@ -57,4 +57,11 @@ public class Producto {
     public void setSelected( Boolean sel ){
         selected = sel;
     }
+
+
+//Nuevo!!!
+    public void crear() {
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Bienvenido " + id + " " + nombre + " " + cantidad_disponible + "" + descripcion));
+    }
 }
