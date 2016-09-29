@@ -6,15 +6,19 @@
               xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:form id="productoForm">
         <div class="form-group has-feedback">
+            <h:outputLabel for="txtnombre" value="Nombre:" />
             <p:inputText id="txtnombre" class="form-control" label="Nombre" value="#{productoBean.producto_actual.nombre}" required="true"></p:inputText>
         </div>
         <div class="form-group has-feedback">
+            <h:outputLabel for="txtprecio" value="Precio:" />
             <p:inputText type="number" id="txtprecio" class="form-control" label="Precio" value="#{productoBean.producto_actual.precio}" required="true"></p:inputText>
         </div>
         <div class="form-group has-feedback">
+            <h:outputLabel for="txtcantidad" value="Cantidad:" />
             <p:inputText type="number" id="txtcantidad" class="form-control" label="Cantidad" value="#{productoBean.producto_actual.cantidad_disponible}" required="true"></p:inputText>
         </div>
         <div class="form-group has-feedback">
+            <h:outputLabel for="txtdescripcion" value="Descripcion:" />
             <p:inputText id="txtdescripcion" class="form-control" label="Descripcion" value="#{productoBean.producto_actual.descripcion}" required="true"></p:inputText>
         </div>
         <p:fileUpload cancelLabel="#{messages.cancelar}" update="mensajes_imagenes"
