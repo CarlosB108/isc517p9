@@ -26,7 +26,7 @@ public class carroBean {
 
         for( carrito_de_venta elemento : elementos ){
             if( elemento.getId_producto( ) == id ){
-                elemento.setCantidad( elemento.getCantidad( ) );
+                elemento.setCantidad( elemento.getCantidad( ) + cantidad );
                 flag = true;
 
                 return "CarritodeCompra?faces-redirect=true";

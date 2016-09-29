@@ -26,12 +26,12 @@
                 <p:commandLink rendered="#{loginBean.admin}" value="#{messages.editar}" action="#{productoBean.editar_producto( p.id ) }">
                     <f:param name="id_producto" value="#{p.id}" />
                 </p:commandLink>
-                <p:commandLink rendered="#{loginBean.admin}" value="#{messages.crear}" action="#{productoBean.crear_producto() }">
-
-                </p:commandLink>
             </p:column>
         </p:dataTable>
 
+        <p:commandLink rendered="#{loginBean.admin}" value="#{messages.crear}" action="#{productoBean.crear_producto() }">
+
+        </p:commandLink>
         <br />
 
         <p:confirmDialog global="true">

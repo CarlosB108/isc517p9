@@ -132,40 +132,15 @@
                 <section class="sidebar" id="sidebar">
                     <ul class="sidebar-menu" id="sidebar-menu" style="height: 80%;width: 100%">
                         <li class="header" id="liHeader">MENU</li>
-                        <h:panelGroup id="menuListGroup" class="sidebar-menu">
-                            <ui:repeat value="#{menuController.menuList}" var="menu">
-                                <ui:fragment rendered="#{menu.topMenuId==null}">
-                                    <li class="treeview" id="mainTree">
-                                        <ui:fragment rendered="#{menu.menuLink eq null or menu.menuLink ==''}">
-                                            <a href="">
-                                                <i class="#{menu.icon}" style="color:#{menu.iconColor}"></i>
-                                                    <span>
-                                                        #{menu.menuName}
-                                                    </span>
-                                                <i class="fa fa-angle-left pull-right"></i>
-                                            </a>
-                                        </ui:fragment>
-                                        <ul class="treeview-menu">
-                                            <ui:repeat value="#{menuController.menuList}" var="subMenu">
-
-                                                <ui:fragment rendered="#{menu.id == subMenu.topMenuId}">
-
-                                                    <li id="li#{subMenu.id}">
-                                                        <p:commandLink action="#{menuController.setPage(subMenu.menuLink,subMenu.menuName)}" update="myPanel,myDashBoard"  onstart="start()" onsuccess="finish()">
-                                                            <i class="fa fa-circle-o"></i>
-                                                            #{subMenu.menuName}
-                                                            <small class="label pull-right bg-aqua">#{countPage.fieldGetValue(subMenu.menuLink)}</small>
-                                                        </p:commandLink>
-                                                    </li>
-
-                                                </ui:fragment>
-
-                                            </ui:repeat>
-                                        </ul>
-                                    </li>
-                                </ui:fragment>
-                            </ui:repeat>
-                        </h:panelGroup>
+                        <li class="treeview" id="mainTree">
+                            <a href="productosDisponibles.xhtml">
+                                    <i class="fa fa-shopping-cart" style="color:#{menu.iconColor}"></i>
+                                        <span>
+                                            Productos disponibles
+                                        </span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

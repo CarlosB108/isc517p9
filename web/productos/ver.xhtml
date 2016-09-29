@@ -7,14 +7,14 @@
     <h:form>
         <b:container layout="fluid">
             <b:row>
-                <b:column colMd="4">
+                <b:column colMd="12">
                     <p:carousel value="#{productoBean.producto_actual.imagenes}" headerText="Imagenes" var="imagen" itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" cricular="true">
                         <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
-                            <h:graphicImage value="imagenes/${imagen}" style="width: 100%:" />
+                            <h:graphicImage value="imagenes/${imagen}" style="width: 100%;" />
                         </h:panelGrid>
                     </p:carousel>
                 </b:column>
-                <b:column colMd="8">
+                <b:column colMd="12">
                     <h3 class="text-justify">${productoBean.producto_actual.nombre}</h3>
                     <h4 class="text-justify">$${productoBean.producto_actual.precio}</h4>
                     <p class="text-justify">${productoBean.producto_actual.descripcion}</p>
@@ -29,10 +29,19 @@
                 </b:column>
             </b:row>
             <b:row>
-                <h3>${messages.mensajes}</h3>
-                <b:panel>
-                </b:panel>
+                <h3>${messages.ratings}</h3>
+                <b:column colMd="12">
+                <p:rating rendered="#{productoBean.bought}" value="5">
+                    <p:ajax event="rate" listener="#{productoBean.onrate}" update="ratings" />
+                </p:rating>
+                </b:column>
+                <b:column colMd="12">
+                <p:dataList id="ratings" value="#{productoBean.ratings}" var="rating">
+                    <p:rating value="#{rating}" readonly="true" />
+                </p:dataList>
+                </b:column>
             </b:row>
+
         </b:container>
     </h:form>
 
