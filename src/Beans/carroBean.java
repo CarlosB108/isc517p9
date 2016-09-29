@@ -75,4 +75,24 @@ public class carroBean {
     public ArrayList< carrito_de_venta > getElementos( ){
         return elementos;
     }
+
+
+    private ArrayList< Contacto > contactos = new ArrayList<>( );
+
+    public String eliminar( ){
+        for( carrito_de_venta c : elementos ){
+            if( c.isSelected( ) ){
+                temp_for_clean.add( c );
+            }
+        }
+
+        if( temp_for_clean.size() > 0 ) {
+            elementos.removeAll(temp_for_clean);
+            temp_for_clean.clear();
+            FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( "Producto/s eliminado/s" ) );
+        }
+        return "index";
+    }
+
+
 }
