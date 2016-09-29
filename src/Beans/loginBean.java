@@ -26,9 +26,9 @@ public class loginBean {
             General.Users.add( admin );
 
             General.Products.add( new Producto( 1, "Pan", 230, "Pita", 20 ) );
-            General.Products.add( new Producto( 1, "Pizza", 0, "Pita", 23 ) );
-            General.Products.add( new Producto( 1, "Queso", 0, "Industrial", 23 ) );
-            General.Products.add( new Producto( 1, "iPhone", 0, "7", 343 ) );
+            General.Products.add( new Producto( 2, "Pizza", 0, "Pita", 23 ) );
+            General.Products.add( new Producto( 3, "Queso", 0, "Industrial", 23 ) );
+            General.Products.add( new Producto( 4, "iPhone", 0, "7", 343 ) );
         }
     }
 

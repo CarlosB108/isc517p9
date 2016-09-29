@@ -60,4 +60,7 @@ public class carrito_de_venta {
     public boolean getSelected( ){
         return this.selected;
     }
+    public boolean isSelected( ){
+        return this.selected;
+    }
 }

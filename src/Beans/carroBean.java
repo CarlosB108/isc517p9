@@ -17,6 +17,7 @@ import java.util.ArrayList;
 @SessionScoped
 public class carroBean {
     private ArrayList< carrito_de_venta > elementos = new ArrayList< >( );
+    private ArrayList< carrito_de_venta > temp_for_clean = new ArrayList< >( );
     int contador = 0;
 
     public String agregar_a_carro( int id, int cantidad ){
@@ -77,11 +78,10 @@ public class carroBean {
     }
 
 
-    private ArrayList< Contacto > contactos = new ArrayList<>( );
 
     public String eliminar( ){
         for( carrito_de_venta c : elementos ){
-            if( c.isSelected( ) ){
+            if( c.getSelected( ) ){
                 temp_for_clean.add( c );
             }
         }
@@ -91,7 +91,7 @@ public class carroBean {
             temp_for_clean.clear();
             FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( "Producto/s eliminado/s" ) );
         }
-        return "index";
+        return "productosDisponibles";
     }
 
 
