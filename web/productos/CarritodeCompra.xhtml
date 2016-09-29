@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="CarritodeCompra">
+        <p:growl id="msg"></p:growl>
+        <h:panelGrid columns="1" cellpadding="5">
+            <p:commandButton value="Agregar al Carrito" type="button" onclick="PF('dlg').show();" />
+        </h:panelGrid>
+
+        <p:dialog header="Agregar al Carrito" widgetVar="dlg" resizable="false">
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="elementos" value="Elementos:" />
+                <p:inputText id="elementos" value="#{Carrobean.elementos}" />
+
+                <f:facet name="footer">
+                    <p:commandButton value="Agregar a carrito!" icon="ui-icon-check" action="#{bean.agregar}" update="contact_form" />
+                </f:facet>
+            </h:panelGrid>
+        </p:dialog>
+
+        <p:dataTable value="#{Carrobean.contactos}" var="c" paginator="true" rows="5" editable="true">
+            <p:ajax event="rowEdit" listener="#{bean.actualizar}" update=":contact_form:msg"></p:ajax>
+            <p:ajax event="rowEditCancel" listener="#{bean.cancelar}" update=":contact_form:msg"></p:ajax>
+
+            <p:column headerText="Nombre">
+                <h:selectBooleanCheckbox value="#{Producto.selected}" />
+            </p:column>
+            <p:column headerText="Nombre">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{ProductoBean.obtener_nombre(id)}" />
+                    </f:facet>
+                    <f:facet name="input">
+                        <h:inputText value="#{ProductoBean.obtener_nombre(id)}" />
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+            <p:column>
+                <p:rowEditor/>
+            </p:column>
+        </p:dataTable>
+
+        <br />
+
+        <p:commandButton value="Eliminar seleccionados!" icon="ui-icon-trash" action="#{bean.eliminar()}" update="contact_form">
+            <p:confirm message="Realmente desea realizar la acción?" header="Hey!" icon="ui-icon-alert"></p:confirm>
+        </p:commandButton>
+
+        <p:confirmDialog global="true">
+            <p:commandButton value="Si" type="button" icon="ui-icon-check" styleClass="ui-confirmdialog-yes"></p:commandButton>
+            <p:commandButton value="No" type="button" icon="ui-icon-close" styleClass="ui-confirmdialog-no"></p:commandButton>
+        </p:confirmDialog>
+    </h:form>
+</ui:composition>
