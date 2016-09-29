@@ -2,10 +2,61 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:form id="form">
+    <p:growl id="msgs" showDetail="true"/>
+
+    <p:dataTable id="producto" var="producto" value="#{dtEditView.producto}" editable="true" style="margin-bottom:20px">
+        <f:facet name="header">
+            Row Editing
+        </f:facet>
+
+        <p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs" />
+        <p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":form:msgs" />
+
+        <p:column headerText="Id">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{producto.id}" /></f:facet>
+                <f:facet name="input"><p:inputText id="modelInput" value="#{producto.id}" style="width:100%"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+
+        <p:column headerText="Nombre">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{producto.nombre}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{producto.nombre}" style="width:100%" label="nombre"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+
+        <p:column headerText="Cantidad_Disponible">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{producto.cantidad_disponible}" /></f:facet>
+                <f:facet name="input">
+                    <h:selectOneMenu value="#{producto.cantidad_disponible}" style="width:100%">
+                        <f:selectItems value="#{dtEditView.cantidad_disponible}" var="cantidad_disponible" itemLabel="#{cantidad_disponible}" itemValue="#{cantidad_disponible}" />
+                    </h:selectOneMenu>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+
+        <p:column headerText="Descripcion">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{producto.descripcion}" /></f:facet>
+                <f:facet name="input">
+                    <h:selectOneMenu value="#{producto.descripcion}" style="width:100%">
+                        <f:selectItems value="#{dtEditView.descripcion}" var="descripcion" itemLabel="#{descripcion}" itemValue="#{descripcion}" />
+                    </h:selectOneMenu>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+
+        <p:column style="width:32px">
+            <p:rowEditor />
+        </p:column>
+    </p:dataTable>
+</h:form>
 </html>
