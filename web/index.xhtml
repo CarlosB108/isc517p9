@@ -29,6 +29,22 @@
             z-index:1001;
         }
     </style>
+    <!-- Nuevo -->
+
+    <script>
+        <!-- Poner link para lista de producto -->
+                var link=""
+        function fn1()
+        {
+
+            window.location.href=link;
+        }
+    </script>
+
+
+
+
+
 </h:head>
 
 <h:body class="hold-transition login-page">
@@ -66,4 +82,31 @@
     <h:outputScript name="jquery/jquery.js" library="primefaces" />
 </h:body>
 </f:view>
+
+
+<!-- Nuevo -->
+<ui:composition template = "CarritodeCompra.xhtml">
+    <ui:define name="body">
+        <!-- Listar imagenes en el arreglo nombre de imagenes -->
+        <p:galleria value="#{[]}" var="image" panelWidth="500" panelHeight="280" style="margin-left: 20%">
+            <p:graphicImage value="/imagenes/#{image} width="500" />
+        </p:galleria>
+    </ui:define>
+    <body onload="scrolldiv()">
+    <div id="scroller">
+
+        <div id="inner-scroller">
+            <p:graphicImage value="/imagenes/" width="200" height="200" style="border:solid 1px" onclick="fn1()"/>
+            <p:graphicImage value="/imagenes/" width="200" height="200" style="border:solid 1px" onclick="fn1()"/>
+            <p:graphicImage value="/imagenes/" width="200" height="200" style="border:solid 1px" onclick="fn1()"/>
+        </div>
+
+    </div>
+
+
+</body>
+
+</ui:composition>
+
+
 </html>

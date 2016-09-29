@@ -2,10 +2,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:form>
+    <p:panel id="panel" header="Nuevo Producto">
+
+        <p:messages id="msgs" />
+
+        <h:panelGrid columns="3" cellpadding="5">
+
+            <p:outputLabel for="id" value="ID:" />
+            <p:inputText id="id" value="#{Producto.id}" required="true" label="id">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="id" display="icon" />
+
+
+            <p:outputLabel for="nombre" value="Nombre:" />
+            <p:inputText id="nombre" value="#{Producto.nombre}" required="true" label="nombre">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="nombre" display="icon" />
+
+
+            <p:outputLabel for="cantidad_disponible" value="Cantidad_disponible:" />
+            <p:inputText id="cantidad_disponible" value="#{Producto.cantidad_disponible}" label="cantidad_disponible" required="true">
+                <f:validateLength minimum="2" />
+                <p:ajax update="msgcantidad_disponible" event="keyup" />
+            </p:inputText>
+            <p:message for="lastname" id="msgcantidad_disponible" display="icon" />
+
+        </h:panelGrid>
+
+        <p:commandButton value="Crear" update="panel" actionListener="#{Producto.crear}" icon="ui-icon-check" />
+    </p:panel>
+</h:form>
+
+
 </html>
