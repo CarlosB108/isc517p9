@@ -2,13 +2,14 @@ package Beans;
 
 import org.primefaces.model.LazyDataModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Created by AcMined on 9/22/2016.
  */
-public class AbstractBean< T > {
+public class AbstractBean< T > implements Serializable {
 
     private T selected;
     private ArrayList<T> filtered;

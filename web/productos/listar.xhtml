@@ -3,7 +3,8 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui">
 
     <h:form id="ActorListForm" class="form-height">
         <h:form id="lista_productos_form">
@@ -13,12 +14,19 @@
                 <p:column headerText="#{messages.nombre}">
                     <h:outputText value="#{p.nombre}" />
                 </p:column>
+                <p:column headerText="#{messages.precio}">
+                    <h:outputText value="#{p.precio}" />
+                </p:column>
                 <p:column headerText="#{messages.disponibilidad}">
                     <h:outputText value="#{p.cantidad_disponible}" />
                 </p:column>
                 <p:column>
-                    <a class="btn btn-primary">#{messages.editar}</a>
-                    <a class="btn btn-success">#{messages.ver}</a>
+                    <p:commandLink value="#{messages.ver}" action="#{productoBean.ver_producto( p.id ) }">
+                        <f:param name="id_producto" value="#{p.id}" />
+                    </p:commandLink>
+                    <p:commandLink value="#{messages.editar}" action="#{productoBean.editar_producto( p.id ) }">
+                        <f:param name="id_producto" value="#{p.id}" />
+                    </p:commandLink>
                 </p:column>
             </p:dataTable>
 

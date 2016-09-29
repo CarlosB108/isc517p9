@@ -1,11 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
-</html>
+<ui:component xmlns="http://www.osgi.org/xmlns/scr/v1.0.0"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:p="http://primefaces.org/ui"
+              xmlns:b="http://bootsfaces.net/ui"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form>
+        <b:container layout="fluid">
+            <b:row>
+                <b:column colMd="4">
+                    <p:carousel value="#{productoBean.producto_actual.imagenes}" headerText="Imagenes" var="imagen" itemStyle="height:200px;text-align:center" numVisible="1" easing="easeOutBounce" style="width:250px" cricular="true">
+                        <h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+                            <h:graphicImage value="imagenes/${imagen}" style="width: 100%:" />
+                        </h:panelGrid>
+                    </p:carousel>
+                </b:column>
+                <b:column colMd="8">
+                    <h3 class="text-justify">${productoBean.producto_actual.nombre}</h3>
+                    <h4 class="text-justify">$${productoBean.producto_actual.precio}</h4>
+                    <p class="text-justify">${productoBean.producto_actual.descripcion}</p>
+                </b:column>
+               <b:column colMd="12">
+                    <h:outputLabel for="cantidad" value="#{messages.cantidad}" />
+                    <h:inputText id="cantidad" value="#{productoBean.cantidad_a_pedir}" event="change" />
+                    <h:commandButton class="btn btn-primary btn-lg btn-block btn-flat" action="#{carroBean.agregar_a_carro( productoBean.producto_actual.id, productoBean.cantidad_a_pedir)}"
+                                     value="#{messages.agregar}" icon="plus"/>
+                </b:column>
+            </b:row>
+            <b:row>
+                <h3>${messages.mensajes}</h3>
+                <b:panel>
+                </b:panel>
+            </b:row>
+        </b:container>
+    </h:form>
+
+</ui:component>

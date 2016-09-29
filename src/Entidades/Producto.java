@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.util.ArrayList;
+
 /**
  * Created by carlosb108 on 9/21/16.
  */
@@ -9,13 +11,27 @@ public class Producto {
     private Integer cantidad_disponible;
     private String descripcion;
     private Boolean selected;
+    private double precio;
+    private ArrayList< String > imagenes;
 
-    public Producto( Integer id, String nombre, Integer cantidad_disponible,String descripcion) {
+    public Producto( Integer id, String nombre, Integer cantidad_disponible,String descripcion, int precio ) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad_disponible = cantidad_disponible;
         this.descripcion = descripcion;
+        this.precio = precio;
+        this.imagenes = new ArrayList< >( );
 
+    }
+
+    public Producto( ){
+        this.id = -1;
+        this.nombre = "";
+        this.cantidad_disponible = 0;
+        this.descripcion = "";
+        this.precio = 0;
+        this.imagenes = new ArrayList< >( );
+        this.selected = false;
     }
 
     public Integer getId() {
@@ -56,5 +72,21 @@ public class Producto {
 
     public void setSelected( Boolean sel ){
         selected = sel;
+    }
+
+    public void setPrecio( double precio ){
+        this.precio = precio;
+    }
+
+    public double getPrecio( ){
+        return precio;
+    }
+
+    public void setImagenes( ArrayList< String > imagenes ){
+        this.imagenes = imagenes;
+    }
+
+    public ArrayList< String > getImagenes( ){
+        return imagenes;
     }
 }
