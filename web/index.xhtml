@@ -60,12 +60,14 @@
                 <div class="form-group has-feedback">
                     <p:inputText id="txtUserName" class="form-control" label="User name" value="#{loginBean.username}" required="true">
                         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                        <f:ajax />
                     </p:inputText>
                     <p:watermark value="#{messages.usernameText}" for="txtUserName"/>
                 </div>
                 <div class="form-group has-feedback">
                     <p:password id="txtPassword" class="form-control" label="Password" value="#{loginBean.password}" required="true">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        <f:ajax />
                     </p:password>
                     <p:watermark for="txtPassword" value="#{messages.passwordText}"/>
                 </div>
@@ -82,31 +84,4 @@
     <h:outputScript name="jquery/jquery.js" library="primefaces" />
 </h:body>
 </f:view>
-
-
-<!-- Nuevo -->
-<ui:composition template = "CarritodeCompra.xhtml">
-    <ui:define name="body">
-        <!-- Listar imagenes en el arreglo nombre de imagenes -->
-        <p:galleria value="#{[]}" var="image" panelWidth="500" panelHeight="280" style="margin-left: 20%">
-            <p:graphicImage value="/imagenes/#{image} width="500" />
-        </p:galleria>
-    </ui:define>
-    <body onload="scrolldiv()">
-    <div id="scroller">
-
-        <div id="inner-scroller">
-            <p:graphicImage value="/imagenes/" width="200" height="200" style="border:solid 1px" onclick="fn1()"/>
-            <p:graphicImage value="/imagenes/" width="200" height="200" style="border:solid 1px" onclick="fn1()"/>
-            <p:graphicImage value="/imagenes/" width="200" height="200" style="border:solid 1px" onclick="fn1()"/>
-        </div>
-
-    </div>
-
-
-</body>
-
-</ui:composition>
-
-
 </html>

@@ -10,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
@@ -37,20 +36,22 @@ public class loginBean {
         try {
             if (!username.equals("") && !username.equals(null) && !password.equals("") && !password.equals(null)) {
                 Usuario user = General.get_user( username, password );
-                FacesContext.getCurrentInstance( ).getExternalContext().redirect("productosDisponibles.xhtml");
 
                 if( user != null ) {
                     General.usuario = user;
                     FacesContext.getCurrentInstance( ).getExternalContext().redirect("productosDisponibles.xhtml");
                 }
                 else {
-                    FacesMessage msg = new FacesMessage( FacesMessage.SEVERITY_INFO, "", ResourceBundle.getBundle( "/messages" ).getString( "alert_empty_inputs"  ) );
+                    FacesMessage msg = new FacesMessage( FacesMessage.SEVERITY_INFO, "Elementos incorrectos", "" );
+                    FacesContext.getCurrentInstance( ).addMessage( null, msg);
+
+                    msg = new FacesMessage( FacesMessage.SEVERITY_INFO, General.Users.size() + "", "" );
                     FacesContext.getCurrentInstance( ).addMessage( null, msg);
                 }
             }
             else {
-                FacesMessage msg = new FacesMessage( FacesMessage.SEVERITY_INFO, "", ResourceBundle.getBundle( "/messages" ).getString( "alert_empty_inputs"  ) );
-                FacesContext.getCurrentInstance( ).addMessage( "", msg);
+                FacesMessage msg = new FacesMessage( FacesMessage.SEVERITY_INFO, "Elementos vacios", "" );
+                FacesContext.getCurrentInstance( ).addMessage( "", msg );
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -21,7 +21,9 @@
                 </b:column>
                <b:column colMd="12">
                     <h:outputLabel for="cantidad" value="#{messages.cantidad}" />
-                    <h:inputText id="cantidad" value="#{productoBean.cantidad_a_pedir}" event="change" />
+                    <h:inputText id="cantidad" value="#{productoBean.cantidad_a_pedir}">
+                        <f:ajax />
+                    </h:inputText>
                     <h:commandButton class="btn btn-primary btn-lg btn-block btn-flat" action="#{carroBean.agregar_a_carro( productoBean.producto_actual.id, productoBean.cantidad_a_pedir)}"
                                      value="#{messages.agregar}" icon="plus"/>
                 </b:column>

@@ -1,46 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:component xmlns="http://www.osgi.org/xmlns/scr/v1.0.0"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:p="http://primefaces.org/ui"
+              xmlns:b="http://bootsfaces.net/ui"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="productoForm">
+        <div class="form-group has-feedback">
+            <p:inputText id="txtnombre" class="form-control" label="Nombre" value="#{productoBean.producto_actual.nombre}" required="true"></p:inputText>
+        </div>
+        <div class="form-group has-feedback">
+            <p:inputText type="number" id="txtprecio" class="form-control" label="Precio" value="#{productoBean.producto_actual.precio}" required="true"></p:inputText>
+        </div>
+        <div class="form-group has-feedback">
+            <p:inputText type="number" id="txtcantidad" class="form-control" label="Cantidad" value="#{productoBean.producto_actual.cantidad_disponible}" required="true"></p:inputText>
+        </div>
+        <div class="form-group has-feedback">
+            <p:inputText id="txtdescripcion" class="form-control" label="Descripcion" value="#{productoBean.producto_actual.descripcion}" required="true"></p:inputText>
+        </div>
+        <p:fileUpload cancelLabel="#{messages.cancelar}" update="mensajes_imagenes"
+                      fileUploadListener="#{productoBean.handleFileUpload}"
+                      multiple="true" sizeLimit="1000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 
+        <p:growl id="mensajes_imagenes" showDetail="true" />
 
-<h:form>
-    <p:panel id="panel" header="Nuevo Producto">
-
-        <p:messages id="msgs" />
-
-        <h:panelGrid columns="3" cellpadding="5">
-
-            <p:outputLabel for="id" value="ID:" />
-            <p:inputText id="id" value="#{Producto.id}" required="true" label="id">
-                <f:validateLength minimum="2" />
-            </p:inputText>
-            <p:message for="id" display="icon" />
-
-
-            <p:outputLabel for="nombre" value="Nombre:" />
-            <p:inputText id="nombre" value="#{Producto.nombre}" required="true" label="nombre">
-                <f:validateLength minimum="2" />
-            </p:inputText>
-            <p:message for="nombre" display="icon" />
-
-
-            <p:outputLabel for="cantidad_disponible" value="Cantidad_disponible:" />
-            <p:inputText id="cantidad_disponible" value="#{Producto.cantidad_disponible}" label="cantidad_disponible" required="true">
-                <f:validateLength minimum="2" />
-                <p:ajax update="msgcantidad_disponible" event="keyup" />
-            </p:inputText>
-            <p:message for="lastname" id="msgcantidad_disponible" display="icon" />
-
-        </h:panelGrid>
-
-        <p:commandButton value="Crear" update="panel" actionListener="#{Producto.crear}" icon="ui-icon-check" />
-    </p:panel>
-</h:form>
-
-
-</html>
+        <p:commandButton value="#{messages.procesar}" action="#{productoBean.procesar}" class="btn btn-primary btn-lg btn-block btn-flat" icon="fa fa-plus" />
+    </h:form>
+</ui:component>

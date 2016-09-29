@@ -6,6 +6,7 @@ package Entidades;
 public class carrito_de_venta {
     private Integer id;
     private Integer id_producto;
+
     private Integer id_cliente;
     private Integer cantidad;
 
